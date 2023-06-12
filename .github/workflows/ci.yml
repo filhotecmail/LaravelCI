@@ -18,6 +18,12 @@ jobs:
         with:
           php-version: 8.0
 
+      - name: Check if Laravel is installed
+        run: |
+          if ! command -v laravel >/dev/null; then
+            composer global require laravel/installer
+          fi
+
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
